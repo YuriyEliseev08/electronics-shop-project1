@@ -1,4 +1,5 @@
 import csv
+import os
 
 
 class Item:
@@ -22,12 +23,11 @@ class Item:
         self.all.append(self)
 
     @classmethod
-    def instantiate_from_csv(cls, file_name):
-        with open(file_name, encoding='UTF-8', newline="") as file:
+    def instantiate_from_csv(cls, filename):
+        with open(filename, encoding='UTF-8', newline="") as file:
             file_info = csv.DictReader(file)
-            print(file_info)
             for info in file_info:
-                cls(info["name"], float(info["price"]), int(info['quantity']))
+                cls(info['name'], float(info['price']), int(info['quantity']))
 
     def calculate_total_price(self) -> float:
         """
@@ -54,5 +54,9 @@ class Item:
         else:
             #    raise Exception("Наименование товара превышает 10 символов")
             name_input_list = list(name_input)
-            name_input_list_10 = name_input_list[0:9]
+            name_input_list_10 = name_input_list[:10]
             self.__name = "".join(name_input_list_10)
+
+    @staticmethod
+    def string_to_number(str_data):
+        return int(float(str_data))
