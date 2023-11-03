@@ -10,5 +10,5 @@ def item_test():
 @pytest.fixture
 def instantiate_from_csv():
     Item.all.clear()
-    Item.instantiate_from_csv('d:\\tuting\\el_shop_yuriy\\src\\items.csv')
+    Item.instantiate_from_csv('C:/Users/Юрий/PycharmProjects/electronics-shop-project1/src/items.csv')
     return Item.all
