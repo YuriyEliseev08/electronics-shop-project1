@@ -49,14 +49,14 @@ class Item:
 
     @name.setter
     def name(self, name_input):
-        if len(name_input) <= 10:
-            self.__name = name_input
-        else:
-            #    raise Exception("Наименование товара превышает 10 символов")
-            name_input_list = list(name_input)
-            name_input_list_10 = name_input_list[:10]
-            self.__name = "".join(name_input_list_10)
+        self.__name = name_input[:10]
 
     @staticmethod
     def string_to_number(str_data):
         return int(float(str_data))
+
+    def __repr__(self):
+        return f"Item('{self.__name}', {self.price}, {self.quantity})"
+
+    def __str__(self):
+        return self.__name
