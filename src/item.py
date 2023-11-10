@@ -55,8 +55,16 @@ class Item:
     def string_to_number(str_data):
         return int(float(str_data))
 
+    def __add__(self, other) -> int:
+        if isinstance(other, Item):
+            return self.quantity + other.quantity
+        else:
+            raise ValueError("Только предметы класса Item или Phone")
+
     def __repr__(self):
-        return f"Item('{self.__name}', {self.price}, {self.quantity})"
+        return f"Item('{self.name}', {self.price}, {self.quantity})"
 
     def __str__(self):
         return self.__name
+
+
